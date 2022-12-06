@@ -11,7 +11,7 @@ const Chat = (props) => {
     useEffect(() => {
         socket.on("new_message", data => {
             setMessages(prevMessages => {
-                return [...prevMessages, data];
+                return [data, ...prevMessages];
             })
         });
     }, []);
@@ -47,7 +47,7 @@ const Chat = (props) => {
                         })}
                     </div>
                 <form onSubmit={onSubmitHandler} className='chatForm'>
-                    <input id="msg" autoComplete="off" type="textarea" value={message} onChange={(e) => setMessage(e.target.value)}/>
+                    <textarea id="msg" autoComplete="off" rows="2" cols="50" value={message} onChange={(e) => setMessage(e.target.value)}/>
                     <button>Send</button>
                 </form>
             </div>

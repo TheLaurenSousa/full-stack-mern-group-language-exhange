@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+form {
+  padding-bottom: 10px;
+}
+
 #nameForm, .chat {
   margin: 0 auto;
   width: 50%;
@@ -9,12 +13,12 @@
   border-radius: 10px;
 }
 
-.nameForm, .chatForm {
-  padding-bottom: 20px;
-}
-
 .chatLog {
   margin-bottom: 40px;
+  height: 500px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .userMessage, .otherMessage {
@@ -43,4 +47,10 @@
 
 #userName {
   font-weight: bold;
+}
+
+.chatForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

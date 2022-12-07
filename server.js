@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 require('./server/routes/chat.routes')(app);
 
 const port = 8000;
-app.listen(port, () => console.log(`Listening on port: ${port}`));
+const server = app.listen(port, () => console.log(`Listening on port: ${port}`));
 
 const io = require('socket.io')(server, {cors: true});
 io.on("connection", socket => {

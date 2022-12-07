@@ -9,6 +9,7 @@ export default () => {
     const navigate = useNavigate();
 
     const createUser = user => {
+        console.log(user);
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
                 navigate('/chat')

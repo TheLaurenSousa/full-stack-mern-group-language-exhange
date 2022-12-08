@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import io from 'socket.io-client';
-import Chat from '../components/chat';
+import ChatInput from '../components/chatInput';
+import ChatField from '../components/chatField';
 
 export default () => {
     const [ socket ] = useState(() => io(':8000'))
@@ -18,7 +19,10 @@ export default () => {
     return (
         <div>
             <h2>Chat</h2>
-            <Chat name="Temp" messages = {messages} socket= {socket}/>
+            <div className='chat'>
+                <ChatField name="Temp" messages={messages}/>
+                <ChatInput name="Temp" socket={socket}/>
+            </div>
         </div>
     )
 }

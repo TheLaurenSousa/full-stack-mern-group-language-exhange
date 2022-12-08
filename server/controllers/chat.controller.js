@@ -1,10 +1,12 @@
 const { User } = require("../models/chat.model");
 
 module.exports.createUser = (request, response) => {
-    const { username, password } = request.body;
-    User.create({ username, password })
-        .then(user => response.json(user))
-        .catch(err => response.status(400).json(err));
+    const { username, password, confirmPassword } = request.body;
+    User.create({username, password, confirmPassword})
+        .then(user => {
+            response.json({ msg: "Success!", user: user });
+        })
+        .catch(err => response.json(err));
 }
 
 module.exports.getAllUsers = (request, response) => {

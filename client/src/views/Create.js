@@ -9,18 +9,18 @@ export default () => {
     const navigate = useNavigate();
 
     const createUser = user => {
-        console.log(user);
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
-                navigate('/chat')
-            })
-            .catch(err => {
-                const errorResponse = err.response.data.errors;
-                const errorArr = [];
-                for (const key of Object.keys(errorResponse)) {
-                    errorArr.push(errorResponse[key].message)
+                if(res.data.errors){
+                    const errorResponse = res.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                } else {
+                    navigate('/chat')
                 }
-                setErrors(errorArr);
             })
     }
 

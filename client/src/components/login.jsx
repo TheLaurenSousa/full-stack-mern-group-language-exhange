@@ -5,11 +5,11 @@ const Login = (props) => {
     const { onSubmitProp } = props;
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ confirmPassword, setConfirmPassword ] = useState('');
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        console.log("Username: "+username+ " and Password: "+password)
-        onSubmitProp({ username, password });
+        onSubmitProp({ username, password, confirmPassword });
     }
 
     return (
@@ -21,6 +21,10 @@ const Login = (props) => {
         <p>
             <label>Password: </label>
             <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
+        </p>
+        <p>
+            <label>Confirm Password: </label>
+            <input type='password' name='confirmPassword' onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}/>
         </p>
         <input type="submit" value="Start Chatting"/>
     </form>

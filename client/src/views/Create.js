@@ -8,7 +8,7 @@ export default () => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
-    const createUser = user => {
+    const registration = user => {
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
                 if(res.data.errors){
@@ -24,13 +24,29 @@ export default () => {
             })
     }
 
+    const login = user => {
+        axios.post('http://localhost:8000/login', user)
+            .then(res => {
+                if(res.data){
+                    const errorResponse = res.data;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key])
+                    }
+                    setErrors(errorArr);
+                } else {
+                    navigate('/chat')
+                }
+            });
+
+    }
+
 
     return (
         <div>
             <h1>Chat Application</h1>
-            <h2>Sign Up:</h2>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
-            <Login onSubmitProp = { createUser }/>
+            <Login registration = { registration } login = { login }/>
         </div>
     )
 }

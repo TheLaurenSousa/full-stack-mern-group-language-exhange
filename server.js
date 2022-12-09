@@ -1,8 +1,19 @@
+// Express
 const express = require('express');
-const cors = require('cors');
 const app = express();
+
+// Cors
+const cors = require('cors');
+
+// Dotenv
+require('dotenv').config();
+
+// Cookie Parser
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 require('./server/config/mongoose.config');
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('./server/routes/chat.routes')(app);

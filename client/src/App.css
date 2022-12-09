@@ -6,11 +6,25 @@ form {
   padding-bottom: 10px;
 }
 
-#nameForm, .chat {
-  margin: 0 auto;
-  width: 50%;
+.login{
+  display: flex;
+  justify-content: center;
+}
+
+#registration, #login, .chat {
   border: 2px solid black;
   border-radius: 10px;
+}
+
+#registration, #login{
+  margin: 20px 50px;
+  padding: 10px;
+  height: 250px;
+}
+
+.chat {
+  margin: 0 auto;
+    width: 50%;
 }
 
 .chatLog {

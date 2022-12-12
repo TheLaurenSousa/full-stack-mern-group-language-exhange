@@ -8,4 +8,5 @@ module.exports = function(app){
     app.put('/user/update/:id', ChatController.updateUser);
     app.delete('/user/delete/:id', ChatController.deleteUser);
     app.post('/login', ChatController.login);
+    app.get('/logout', ChatController.logout);
 }

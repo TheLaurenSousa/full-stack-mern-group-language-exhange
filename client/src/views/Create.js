@@ -11,6 +11,7 @@ export default () => {
     const registration = user => {
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
+                console.log(res);
                 if(res.data.errors){
                     const errorResponse = res.data.errors;
                     const errorArr = [];

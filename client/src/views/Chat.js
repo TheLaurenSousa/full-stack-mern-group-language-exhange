@@ -3,6 +3,7 @@ import '../App.css';
 import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
 import ChatField from '../components/chatField';
+import Nav from '../components/nav';
 
 export default () => {
     const [ socket ] = useState(() => io(':8000'))
@@ -18,6 +19,7 @@ export default () => {
 
     return (
         <div>
+            <Nav/>
             <h2>Chat</h2>
             <div className='chat'>
                 <ChatField name="Temp" messages={messages}/>

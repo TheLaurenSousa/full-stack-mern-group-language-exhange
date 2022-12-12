@@ -11,6 +11,7 @@ const ChatInput = (props) => {
         if (message && name) {
             socket.emit("new_message", {msg: message, name: name});
         }
+        setMessage('');
     };
 
     return (

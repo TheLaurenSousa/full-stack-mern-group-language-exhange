@@ -46,14 +46,13 @@ module.exports.deleteUser = (request, response) => {
 
 module.exports.login = (request, response) => {
     const user = User.findOne({ username: request.body.username })
-        .then(results => {
-            if (!results){
+        .then(user => {
+            if (!user){
                 return response.json({
                     message: "Username not found"
                 });
-            }
-
-            bcrypt.compare(request.body.password, results.password)
+            } else {
+                bcrypt.compare(request.body.password, user.password)
                 .then(match => {
                     if(!match){
                         return response.json({
@@ -68,9 +67,9 @@ module.exports.login = (request, response) => {
 
                 response.cookie("usertoken", userToken, secretkey, {
                     httpOnly: true
-                }).json();
-                // Add local storage here
+                }).json({ message: "Success!", user: user});
             });
+            }
         });
 }
 

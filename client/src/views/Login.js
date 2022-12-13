@@ -11,10 +11,10 @@ export default () => {
     const registration = user => {
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
-                console.log(res);
-                // console.log(user); I can access the User info from here.
                 if (res.data.message === "Success!"){
-                    navigate('/chat')
+                    const username = user.username
+                    console.log(username);
+                    navigate('/chat', {state: {name: username}})
                 } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];
@@ -29,15 +29,16 @@ export default () => {
     const login = user => {
         axios.post('http://localhost:8000/login', user)
             .then(res => {
-                if(res.data){
+                if (res.data.message === "Success!"){
+                    const username = user.username;
+                    navigate('/chat', {state: {name: username}})
+                } else {
                     const errorResponse = res.data;
                     const errorArr = [];
                     for (const key of Object.keys(errorResponse)) {
                         errorArr.push(errorResponse[key])
                     }
                     setErrors(errorArr);
-                } else {
-                    navigate('/chat')
                 }
             });
     }

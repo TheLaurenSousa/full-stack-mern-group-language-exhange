@@ -68,3 +68,12 @@ form {
   align-items: center;
   justify-content: center;
 }
+
+.nav{
+  height: 50px;
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

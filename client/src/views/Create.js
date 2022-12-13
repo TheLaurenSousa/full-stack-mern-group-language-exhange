@@ -40,9 +40,7 @@ export default () => {
                     navigate('/chat')
                 }
             });
-
     }
-
 
     return (
         <div>

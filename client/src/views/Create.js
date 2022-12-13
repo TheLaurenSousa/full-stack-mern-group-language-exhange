@@ -12,17 +12,18 @@ export default () => {
         axios.post('http://localhost:8000/user/create', user)
             .then((res) => {
                 console.log(res);
-                if(res.data.errors){
+                // console.log(user); I can access the User info from here.
+                if (res.data.message === "Success!"){
+                    navigate('/chat')
+                } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];
                     for (const key of Object.keys(errorResponse)) {
                         errorArr.push(errorResponse[key].message)
                     }
                     setErrors(errorArr);
-                } else {
-                    navigate('/chat')
                 }
-            })
+            });
     }
 
     const login = user => {

@@ -15,7 +15,7 @@ module.exports.createUser = (request, response) => {
 
             response.cookie("usertoken", userToken, secretkey, {
                 httpOnly: true
-            }).json({ msg: "Success!", user: user });
+            }).json({ message: "Success!", user: user });
         })
         .catch(err => response.json(err));
 }

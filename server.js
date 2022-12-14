@@ -26,4 +26,10 @@ io.on("connection", socket => {
     socket.on("new_message", msg => {
         io.emit('new_message', msg);
     });
+    socket.on("new_user", msg => {
+        io.emit('new_user', msg);
+    });
+    socket.on("user_left", msg => {
+        io.emit('user_left', msg);
+    });
 });

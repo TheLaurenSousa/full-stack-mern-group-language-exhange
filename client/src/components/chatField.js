@@ -5,6 +5,7 @@ const ChatField = (props) => {
     const name = props.name;
     const messages = props.messages;
 
+
     return (
         <div className='chatLog'>
             {messages.map((msg, i) => {

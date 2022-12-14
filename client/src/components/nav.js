@@ -13,6 +13,7 @@ const Nav = (props) => {
         logoutProcess()
             .then(res => {
                 socket.emit("new_message", {msg: `${name} has left the chat`, name: "Server"})
+                socket.emit("user_left", {msg: name})
             })
             .catch(err => console.log(err));
     }

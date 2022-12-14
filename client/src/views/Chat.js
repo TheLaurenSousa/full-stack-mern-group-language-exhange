@@ -7,12 +7,13 @@ import Nav from '../components/nav';
 import { useLocation } from 'react-router-dom';
 
 export default () => {
-    const [ socket ] = useState(() => io(':8000'))
+    const [ socket ] = useState(() => io(':8000'));
     const [ messages, setMessages ] = useState([]);
     const {state} = useLocation();
     const {name} = state;
 
     useEffect(() => {
+            enterTheChat();
             socket.on("new_message", data => {
             setMessages(prevMessages => {
                 return [data, ...prevMessages];
@@ -20,9 +21,13 @@ export default () => {
         });
     }, []);
 
+    const enterTheChat = () => {
+        socket.emit("new_message", {msg: `${name} has entered the chat`, name: "Server"})
+    }
+
     return (
         <div>
-            <Nav/>
+            <Nav name={name}/>
             <h2>Chat</h2>
             <div className='chat'>
                 <ChatField name={name} messages={messages}/>

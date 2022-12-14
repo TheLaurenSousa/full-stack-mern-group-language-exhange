@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import Login from '../components/login';
+import LoginForms from '../components/loginforms';
+import loginProcess from '../components/users/login';
+import registrationProcess from '../components/users/registration';
 
 export default () => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
     const registration = user => {
-        axios.post('http://localhost:8000/user/create', user)
+        registrationProcess(user)
             .then((res) => {
                 if (res.data.message === "Success!"){
                     const username = user.username
-                    console.log(username);
                     navigate('/chat', {state: {name: username}})
                 } else {
                     const errorResponse = res.data.errors;
@@ -27,7 +27,7 @@ export default () => {
     }
 
     const login = user => {
-        axios.post('http://localhost:8000/login', user)
+        loginProcess(user)
             .then(res => {
                 if (res.data.message === "Success!"){
                     const username = user.username;
@@ -47,7 +47,7 @@ export default () => {
         <div>
             <h1>Chat Application</h1>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
-            <Login registration = { registration } login = { login }/>
+            <LoginForms registration = { registration } login = { login }/>
         </div>
     )
 }

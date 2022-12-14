@@ -15,6 +15,13 @@ const ChatField = (props) => {
                             <p id='userMessage'>{msg.msg}</p>
                         </div>
                     )
+                } else if (msg.name === "Server"){
+                    return (
+                        <div key={i} className="serverMessage">
+                            <p>{msg.msg}</p>
+                        </div>
+                    )
+
                 } else {
                     return (
                         <div key={i} className="otherMessage">

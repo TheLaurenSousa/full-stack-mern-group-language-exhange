@@ -54,6 +54,14 @@ form {
   background-color: #b3dbf3;
 }
 
+.serverMessage {
+  margin-top: 10px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: auto;
+  color: #797979;
+}
+
 #userName, #userMessage {
   margin: 10px;
   text-align: left;

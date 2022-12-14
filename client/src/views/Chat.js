@@ -4,12 +4,11 @@ import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
 import ChatField from '../components/chatField';
 import Nav from '../components/nav';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default () => {
     const [ socket ] = useState(() => io(':8000'))
     const [ messages, setMessages ] = useState([]);
-    const navigate = useNavigate();
     const {state} = useLocation();
     const {name} = state;
 

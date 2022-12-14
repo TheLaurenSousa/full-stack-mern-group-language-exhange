@@ -1,4 +1,4 @@
-const { User } = require("../models/chat.model");
+const { User } = require("../models/users.model");
 require('dotenv').config();
 const secretkey = process.env.SECRET_KEY;
 const bcrypt = require('bcrypt');

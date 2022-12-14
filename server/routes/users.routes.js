@@ -1,4 +1,4 @@
-const ChatController = require('../controllers/chat.controller');
+const ChatController = require('../controllers/users.controller');
 
 module.exports = function(app){
     app.post('/user/create', ChatController.createUser);

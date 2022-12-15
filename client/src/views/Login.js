@@ -14,7 +14,7 @@ export default () => {
             .then((res) => {
                 if (res.data.message === "Success!"){
                     const username = user.username
-                    navigate('/chat', {state: {name: username}})
+                    navigate('/home', {state: {name: username}})
                 } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];
@@ -31,7 +31,7 @@ export default () => {
             .then(res => {
                 if (res.data.message === "Success!"){
                     const username = user.username;
-                    navigate('/chat', {state: {name: username}})
+                    navigate('/home', {state: {name: username}})
                 } else {
                     const errorResponse = res.data;
                     const errorArr = [];

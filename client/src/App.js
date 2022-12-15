@@ -5,6 +5,7 @@ import LandingPage from './views/LandingPage';
 import Login from './views/Login';
 import Home from './views/Home';
 import Chat from './views/Chat';
+import Temp from './views/Temp';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route element={<Login/>} path="/login"/>
         <Route element={<Home/>} path='/home'/>
         <Route element={<Chat/>} path="/chat"/>
+        <Route element={<Temp/>} path="/temp"/>
       </Routes>
     </div>
   );

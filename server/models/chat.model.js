@@ -1,15 +1,20 @@
 const mongoose = require('mongoose');
 
 const ChatSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: [
+            true,
+            "Title is required"
+        ]
+    },
     users: [{
-        id: Number, 
         username: String
     }],
     messages: [{
         username: String,
-        message: String, 
-        date: Date
+        message: String
     }]
 }, {timestamps: true});
 
-module.exports.User = mongoose.model("Chat", ChatSchema);
+module.exports.Chat = mongoose.model("Chat", ChatSchema);

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import io from 'socket.io-client';
 import logoutProcess from './users/logout';
 
 const Nav = (props) => {
     const [ socket ] = useState(() => io(':8000'));
-    const name = props.name;
+    const navigate = useNavigate();
+    const state = props;
+    const name = state.name;
+    const id = state.id;
 
 
     const logout = e => {
@@ -16,16 +19,17 @@ const Nav = (props) => {
                 socket.emit("user_left", {msg: name})
             })
             .catch(err => console.log(err));
+        navigate('/')
+    }
+
+    const onHomeClick = e => {
+        navigate('/home', {state: {id: id, name: name}})
     }
 
     return (
         <div className='nav'>
-            <Link to={'/'}>
-                <button>Home</button>
-            </Link>
-            <Link to={'/'}>
-                <button onClick={logout}>Logout</button>
-            </Link>
+            <button onClick={onHomeClick}>Home</button>
+            <button onClick={logout}>Logout</button>
         </div>
     );
 }

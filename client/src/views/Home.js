@@ -6,13 +6,14 @@ import { useLocation } from 'react-router-dom';
 
 export default () => {
     const {state} = useLocation();
-    const{name} = state;
+    const {name} = state;
+    const {id} = state;
 
     return (
         <div>
-            <Nav name={name}/>
+            <Nav id={id} name={name}/>
             <h1>Welcome {name}!</h1>
-            <UserList/>
+            <UserList id={id} name={name}/>
         </div>
     )
 }

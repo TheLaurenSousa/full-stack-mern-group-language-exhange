@@ -14,7 +14,8 @@ export default () => {
             .then((res) => {
                 if (res.data.message === "Success!"){
                     const username = user.username
-                    navigate('/home', {state: {name: username}})
+                    const id = user._id;
+                    navigate('/home', {state: {id: id, name: username}})
                 } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];
@@ -30,8 +31,9 @@ export default () => {
         loginProcess(user)
             .then(res => {
                 if (res.data.message === "Success!"){
-                    const username = user.username;
-                    navigate('/home', {state: {name: username}})
+                    const username = res.data.user.username;
+                    const id = res.data.user._id;
+                    navigate('/home', {state: {id: id, name: username}})
                 } else {
                     const errorResponse = res.data;
                     const errorArr = [];

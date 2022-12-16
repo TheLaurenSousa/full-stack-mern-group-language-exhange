@@ -4,30 +4,29 @@ import '../App.css';
 import io from 'socket.io-client';
 import logoutProcess from './users/logout';
 
-const Nav = (props) => {
+const Nav = () => {
     const [ socket ] = useState(() => io(':8000'));
     const navigate = useNavigate();
-    const state = props;
-    const name = state.name;
-    const id = state.id;
+    const username = localStorage.getItem('username');
 
 
     const logout = e => {
         logoutProcess()
             .then(res => {
-                socket.emit("new_message", {msg: `${name} has left the chat`, name: "Server"})
-                socket.emit("user_left", {msg: name})
+                socket.emit("new_message", {msg: `${username} has left the chat`, name: "Server"});
+                socket.emit("user_left", {msg: username});
+                localStorage.clear();
             })
             .catch(err => console.log(err));
         navigate('/')
     }
 
     const onHomeClick = e => {
-        navigate('/home', {state: {id: id, name: name}})
+        navigate('/home')
     }
 
     const createChat = (e) => {
-        navigate('/chat/new', {state: {id: id, name: name}})
+        navigate('/chat/new')
     }
 
     return (

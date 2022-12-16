@@ -4,13 +4,11 @@ import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
 import ChatField from '../components/chatField';
 import Nav from '../components/nav';
-import { useLocation } from 'react-router-dom';
 
 export default () => {
     const [ socket ] = useState(() => io(':8000'));
     const [ messages, setMessages ] = useState([]);
-    const {state} = useLocation();
-    const {name} = state;
+    const username = localStorage.getItem('username');
     const [usersInChat, setUsersInChat] = useState([]);
 
     useEffect(() => {
@@ -40,17 +38,17 @@ export default () => {
     });
 
     const enterTheChat = () => {
-        socket.emit("new_message", {msg: `${name} has entered the chat`, name: "Server"})
-        socket.emit("new_user", {msg: name})
+        socket.emit("new_message", {msg: `${username} has entered the chat`, name: "Server"})
+        socket.emit("new_user", {msg: username})
     }
 
     return (
         <div>
-            <Nav name={name}/>
+            <Nav/>
             <h2>Chat</h2>
             <div className='chat'>
-                <ChatField name={name} messages={messages}/>
-                <ChatInput name={name} socket={socket}/>
+                <ChatField messages={messages}/>
+                <ChatInput socket={socket}/>
             </div>
             {/* To Do: Make this display on the side of the chat */}
             {usersInChat.map((user, i) => {

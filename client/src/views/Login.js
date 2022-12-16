@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import LoginForms from '../components/loginforms';
@@ -13,9 +13,9 @@ export default () => {
         registrationProcess(user)
             .then((res) => {
                 if (res.data.message === "Success!"){
-                    const username = user.username
-                    const id = user._id;
-                    navigate('/home', {state: {id: id, name: username}})
+                    localStorage.setItem('username', res.data.user.username);
+                    localStorage.setItem('id', res.data.user._id);
+                    navigate('/home');
                 } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];
@@ -31,9 +31,9 @@ export default () => {
         loginProcess(user)
             .then(res => {
                 if (res.data.message === "Success!"){
-                    const username = res.data.user.username;
-                    const id = res.data.user._id;
-                    navigate('/home', {state: {id: id, name: username}})
+                    localStorage.setItem('username', res.data.user.username);
+                    localStorage.setItem('id', res.data.user._id);
+                    navigate('/home');
                 } else {
                     const errorResponse = res.data;
                     const errorArr = [];

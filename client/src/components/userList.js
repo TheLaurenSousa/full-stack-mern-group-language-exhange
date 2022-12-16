@@ -3,11 +3,9 @@ import '../App.css';
 import getUsers from '../components/users/getUsers';
 import { useNavigate } from 'react-router-dom';
 
-const UserList = (props) => {
+const UserList = () => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
-    const name = props.name;
-    const id = props.id;
 
     useEffect(() => {
         getUsers()
@@ -22,7 +20,7 @@ const UserList = (props) => {
     }, []);
 
     const startChat = (e) => {
-        navigate('/chat', {state: {id: id, name: name}})
+        navigate('/chat')
     }
 
     return (

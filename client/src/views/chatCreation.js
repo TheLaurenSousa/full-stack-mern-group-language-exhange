@@ -3,15 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import createChat from '../components/chat/createChat';
 import Nav from '../components/nav'
 
-export default (props) => {
+export default () => {
     const [ title, setTitle ] = useState('');
     const [ users, setUsers ] = useState('');
     const [ messages, setMessages ] = useState('');
     const [ errors, setErrors ] = useState([]);
     const navigate = useNavigate();
-    const state = props;
-    const name  = state.name;
-    const id = state.id;
 
 
 
@@ -20,7 +17,7 @@ export default (props) => {
         createChat({title, users, messages})
             .then((res) => {
                 if (res.data.message === "Success!"){
-                    navigate('/chat', {state: {id: id, name: name}})
+                    navigate('/chat')
                     // To Do: Update this to send user into
                 } else {
                     const errorResponse = res.data.errors;
@@ -35,8 +32,8 @@ export default (props) => {
 
     return (
         <div>
-            <Nav id={id} name={name}/>
-            <h1>Testing Creating a Chat - {name}</h1>
+            <Nav/>
+            <h1>Testing Creating a Chat</h1>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
             <form onSubmit={createChatHandler}>
                 <h2>Create a Chat:</h2>

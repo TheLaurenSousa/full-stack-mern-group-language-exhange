@@ -2,14 +2,14 @@ import React from 'react';
 import '../App.css';
 
 const ChatField = (props) => {
-    const name = props.name;
+    const username = localStorage.getItem('username');
     const messages = props.messages;
 
 
     return (
         <div className='chatLog'>
             {messages.map((msg, i) => {
-                if (msg.name === name){
+                if (msg.name === username){
                     return (
                         <div key={i} className="userMessage">
                             <p id='userName'>{msg.name} said:</p>

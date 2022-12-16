@@ -26,9 +26,14 @@ const Nav = (props) => {
         navigate('/home', {state: {id: id, name: name}})
     }
 
+    const createChat = (e) => {
+        navigate('/chat/new', {state: {id: id, name: name}})
+    }
+
     return (
         <div className='nav'>
             <button onClick={onHomeClick}>Home</button>
+            <button onClick={createChat}>Create Chat</button>
             <button onClick={logout}>Logout</button>
         </div>
     );

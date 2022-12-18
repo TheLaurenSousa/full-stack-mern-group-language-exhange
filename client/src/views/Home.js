@@ -23,6 +23,7 @@ export default () => {
         <div>
             <Nav/>
             <h1>Welcome {username}!</h1>
+            <p>Users:</p>
             <div>
                 {userList.map(({id, username}) => {
                     return (

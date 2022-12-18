@@ -33,10 +33,9 @@ export default () => {
     return (
         <div>
             <Nav/>
-            <h1>Testing Creating a Chat</h1>
+            <h1>Create a Chat</h1>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
             <form onSubmit={createChatHandler}>
-                <h2>Create a Chat:</h2>
                 <p>
                     <label>Title: </label>
                     <input type='text' name='title' onChange={(e) => setTitle(e.target.value)}/>

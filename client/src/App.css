@@ -22,9 +22,18 @@ form {
   height: 250px;
 }
 
+.chatPage{
+  display: flex;
+  width: 75%;
+  margin: 20px auto;
+}
+
 .chat {
-  margin: 0 auto;
-    width: 50%;
+  width: 75%;
+}
+
+.chatInfo{
+  width: 25%;
 }
 
 .chatLog {

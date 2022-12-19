@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import '../App.css';
 import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
@@ -10,8 +11,11 @@ export default () => {
     const [ messages, setMessages ] = useState([]);
     const username = localStorage.getItem('username');
     const [usersInChat, setUsersInChat] = useState([]);
+    const chatId = useParams().id;
 
     useEffect(() => {
+        console.log("here")
+        console.log(chatId)
         enterTheChat();
         socket.on("new_message", data => {
             setMessages(prevMessages => {
@@ -46,6 +50,7 @@ export default () => {
         <div>
             <Nav/>
             <h2>Chat</h2>
+            <p>{chatId}</p>
             <div className='chat'>
                 <ChatField messages={messages}/>
                 <ChatInput socket={socket}/>

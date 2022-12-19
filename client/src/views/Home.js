@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Nav from '../components/nav';
-import getUsers from '../components/users/getUsers';
+import getChats from '../components/chat/getChats';
+import { Link } from 'react-router-dom';
 
 export default () => {
     const username = localStorage.getItem('username');
-    const [userList, setUserList] = useState([]);
+    const [chatList, setChatList] = useState([]);
 
     useEffect(() => {
-        getUsers()
+        getChats()
             .then((res) => {
                 const list = []
-                const userData = res.data
-                for (const key of Object.keys(userData)){
-                    list.push({id: userData[key]._id, username: userData[key].username})
+                const chatData = res.data
+                for (const key of Object.keys(chatData)){
+                    list.push({id: chatData[key]._id, title: chatData[key].title})
                 }
-                setUserList(list);
+                setChatList(list);
             })
     }, []);
 
@@ -23,11 +24,12 @@ export default () => {
         <div>
             <Nav/>
             <h1>Welcome {username}!</h1>
-            <p>Users:</p>
+            <p>Chats:</p>
             <div>
-                {userList.map(({id, username}) => {
+                {chatList.map(({id, title}) => {
+                    const test = `/chat/${id}`
                     return (
-                        <p key={id}>{username}</p>
+                        <Link to={test} key={id}>{title}</Link>
                     )
                 })}
             </div>

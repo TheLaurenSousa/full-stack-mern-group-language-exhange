@@ -5,8 +5,8 @@ import Nav from '../components/nav'
 
 export default () => {
     const [ title, setTitle ] = useState('');
-    const [ users, setUsers ] = useState('');
-    const [ messages, setMessages ] = useState('');
+    const owner = localStorage.getItem('id');
+    const [ description, setDescription ] = useState('');
     const [ errors, setErrors ] = useState([]);
     const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ export default () => {
 
     const createChatHandler = e => {
         e.preventDefault();
-        createChat({title, users, messages})
+        createChat({title, description, owner})
             .then((res) => {
                 if (res.data.message === "Success!"){
                     navigate('/chat')
@@ -41,12 +41,8 @@ export default () => {
                     <input type='text' name='title' onChange={(e) => setTitle(e.target.value)}/>
                 </p>
                 <p>
-                    <label>Add Users: </label>
-                    <input type='text' onChange={(e) => setUsers({username: e.target.value})}/>
-                </p>
-                <p>
-                    <label>Set Initial Message: </label>
-                    <input type='text' onChange={(e) => setMessages({username: "Temp", message: e.target.value})}/>
+                    <label>Description: </label>
+                    <textarea rows="5" onChange={(e) => setDescription(e.target.value)}/>
                 </p>
                 <input type="submit" value="Start Chatting"/>
             </form>

@@ -16,6 +16,7 @@ function App() {
         <Route element={<Home/>} path='/home'/>
         <Route element={<Chat/>} path="/chat"/>
         <Route element={<ChatCreation/>} path="/chat/new"/>
+        <Route element={<Chat/>} path="/chat/:id"/>
       </Routes>
     </div>
   );

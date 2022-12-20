@@ -17,8 +17,7 @@ export default () => {
         createChat({title, description, owner})
             .then((res) => {
                 if (res.data.message === "Success!"){
-                    navigate('/home')
-                    // To Do: Update this to send user into
+                    navigate(`/chat/${res.data.chat._id}`)
                 } else {
                     const errorResponse = res.data.errors;
                     const errorArr = [];

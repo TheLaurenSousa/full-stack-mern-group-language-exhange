@@ -29,7 +29,7 @@ export default () => {
                 {chatList.map(({id, title}) => {
                     const test = `/chat/${id}`
                     return (
-                        <Link to={test} key={id}>{title}</Link>
+                        <p><Link to={test} key={id}>{title}</Link></p>
                     )
                 })}
             </div>

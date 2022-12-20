@@ -18,15 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('./server/routes/users.routes')(app);
 require('./server/routes/chat.routes')(app);
+require('./server/routes/message.routes')(app);
 
 const port = 8000;
 const server = app.listen(port, () => console.log(`Listening on port: ${port}`));
 
 const io = require('socket.io')(server, {cors: true});
 io.on("connection", socket => {
-    socket.on("new_message", msg => {
-        io.emit('new_message', msg);
-    });
     socket.on("new_user", msg => {
         io.emit('new_user', msg);
     });

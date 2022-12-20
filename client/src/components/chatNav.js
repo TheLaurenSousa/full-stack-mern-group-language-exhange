@@ -33,6 +33,7 @@ const ChatNav = () => {
     const exitChat = () => {
         socket.emit("new_message", {msg: `${username} has left the chat`, name: "Server"});
         socket.emit("user_left", {msg: username});
+        localStorage.setItem('chatId', 0);
     }
 
     return (

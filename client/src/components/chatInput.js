@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import '../App.css';
+import createMessage from '../components/messages/createMessage';
 
 const ChatInput = (props) => {
     const username = localStorage.getItem('username');
-    const socket = props.socket;
+    const chatId = localStorage.getItem('chatId');
+    // const socket = props.socket;
     const [ message, setMessage ] = useState('');
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if (message && username) {
-            socket.emit("new_message", {msg: message, name: username});
+            // socket.emit("new_message", {msg: message, name: username});
+            createMessage({username, chatId, message})
         }
         setMessage('');
     };

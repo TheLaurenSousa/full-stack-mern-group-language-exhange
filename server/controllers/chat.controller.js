@@ -26,3 +26,10 @@ module.exports.updateChat = (request, response) => {
         .then(updatedChat => response.json(updatedChat))
         .catch(err => response.status(400).json(err));
 }
+
+module.exports.deleteChat = (request, response) => {
+    Chat.deleteOne({_id: request.params.id})
+        .then(deleteConfirmation => 
+            response.json({message: "Success!", deleteConfirmation: deleteConfirmation}))
+        .catch(err => response.json(err));
+}

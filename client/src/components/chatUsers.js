@@ -27,6 +27,7 @@ const ChatUsers = () => {
 
     return (
         <div>
+            <p>Active Users in Chat:</p>
             <ul>
                 {usersInChat.map((user, i) => {
                     return (

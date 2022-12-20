@@ -28,12 +28,12 @@ form {
   margin: 20px auto;
 }
 
-.chat {
-  width: 75%;
+.chatInfo{
+  margin-left: 10px;
 }
 
-.chatInfo{
-  width: 25%;
+.chat {
+  width: 75%;
 }
 
 .chatLog {

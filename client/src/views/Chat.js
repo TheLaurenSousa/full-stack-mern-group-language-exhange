@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../App.css';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
 import ChatField from '../components/chatField';
 import ChatInfo from '../components/chatInfo';
-import ChatUsers from '../components/chatUsers';
 import ChatNav from '../components/chatNav';
+import createMessage from '../components/messages/createMessage';
 
 export default () => {
-    const [ socket ] = useState(() => io(':8000'));
     const username = localStorage.getItem('username');
     const chatId = useParams().id;
 
-    // When user enters the chat, notifies other users and stores chatId in localStorage
+    // When user enters the chat, sends server message and stores chatId in localStorage
     useEffect(() => {
         localStorage.setItem('chatId', chatId);
-        socket.emit("new_user", {msg: username})
+        if (username && chatId) {
+            createMessage({username: "Server", chatId: chatId, message: `${username} has entered the chat`})
+        }
     }, []);
 
     return (
         <div>
-            <ChatNav/>
+            <ChatNav chatId={chatId}/>
             <div className='chatPage'>
                 <div className='chat'>
                     <ChatField chatId={chatId}/>
-                    <ChatInput socket={socket}/>
+                    <ChatInput/>
                 </div>
                 <div className='chatInfo'>
                     <ChatInfo chatId={chatId}/>
-                    <ChatUsers/>
                 </div>
             </div>
         </div>

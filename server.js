@@ -22,13 +22,3 @@ require('./server/routes/message.routes')(app);
 
 const port = 8000;
 const server = app.listen(port, () => console.log(`Listening on port: ${port}`));
-
-const io = require('socket.io')(server, {cors: true});
-io.on("connection", socket => {
-    socket.on("new_user", msg => {
-        io.emit('new_user', msg);
-    });
-    socket.on("user_left", msg => {
-        io.emit('user_left', msg);
-    });
-});

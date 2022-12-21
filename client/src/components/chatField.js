@@ -17,7 +17,7 @@ const ChatField = (props) => {
                 }
                 setMessages(msgArr);
             })
-    })
+    });
 
     return (
         <div className='chatLog'>
@@ -29,13 +29,12 @@ const ChatField = (props) => {
                             <p id='userMessage'>{msg.message}</p>
                         </div>
                     )
-                } else if (msg.name === "Server"){
+                } else if (msg.username === "Server"){
                     return (
                         <div key={i} className="serverMessage">
                             <p>{msg.message}</p>
                         </div>
                     )
-
                 } else {
                     return (
                         <div key={i} className="otherMessage">

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
 import '../App.css';
 import logoutProcess from './users/logout';
+import createMessage from './messages/createMessage';
 
 
-const ChatNav = () => {
+const ChatNav = (props) => {
     const navigate = useNavigate();
-    const [ socket ] = useState(() => io(':8000'));
     const username = localStorage.getItem('username');
+    const chatId = props.chatId;
 
     const logout = e => {
         logoutProcess()
@@ -31,9 +31,8 @@ const ChatNav = () => {
     }
 
     const exitChat = () => {
-        socket.emit("new_message", {msg: `${username} has left the chat`, name: "Server"});
-        socket.emit("user_left", {msg: username});
-        localStorage.setItem('chatId', 0);
+        const exitMessage = {username: "Server", chatId: chatId, message: `${username} has left the chat`};
+        createMessage(exitMessage);
     }
 
     return (

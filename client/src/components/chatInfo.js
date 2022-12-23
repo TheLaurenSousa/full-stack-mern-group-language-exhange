@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 const ChatInfo = (props) => {
     const chatId = props.chatId;
+    const userId = localStorage.getItem('id');
     const [ chatTitle, setChatTitle ] = useState(''); 
     const [ chatDescription, setChatDescription ] = useState('');
     const [ chatOwner, setChatOwner ] = useState('');
+    const [ chatOwnerId, setChatOwnerId ] = useState('');
+    const [ userIsOwner, setUserIsOwner ] = useState(false);
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]);
 
@@ -22,10 +25,14 @@ const ChatInfo = (props) => {
                 getUserInfo(info.owner)
                     .then((res) => {
                         setChatOwner(res.data.username)
+                        setChatOwnerId(res.data._id);
                     })
                     .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
+        if (userId === chatOwnerId){
+            setUserIsOwner(true)
+        }
     })
 
     const deleteHandler = () => {
@@ -51,7 +58,9 @@ const ChatInfo = (props) => {
             <h1>{chatTitle}</h1>
             <p>Description: {chatDescription}</p>
             <p>Chat Creator: {chatOwner}</p>
-            <button onClick={deleteHandler}>Delete Chat</button>
+            { userIsOwner
+                ? <button onClick={deleteHandler}>Delete Chat</button> : null
+            }
         </div>
     )
 }

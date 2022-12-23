@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../App.css';
-// import io from 'socket.io-client';
 import ChatInput from '../components/chatInput';
 import ChatField from '../components/chatField';
 import ChatInfo from '../components/chatInfo';

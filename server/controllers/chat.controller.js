@@ -1,8 +1,8 @@
 const { Chat } = require('../models/chat.model');
 
 module.exports.createChat = (request, response) => {
-    const { title, description, owner } = request.body;
-    Chat.create({title, description, owner})
+    const { title, description, language, owner } = request.body;
+    Chat.create({title, description, language, owner})
         .then(chat => {
             response.json({message: "Success!", chat: chat});
         })

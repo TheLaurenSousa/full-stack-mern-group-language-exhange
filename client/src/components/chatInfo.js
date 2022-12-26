@@ -10,6 +10,7 @@ const ChatInfo = (props) => {
     const userId = localStorage.getItem('id');
     const [ chatTitle, setChatTitle ] = useState(''); 
     const [ chatDescription, setChatDescription ] = useState('');
+    const [ chatLanguage, setChatLanguage ] = useState('');
     const [ chatOwner, setChatOwner ] = useState('');
     const [ chatOwnerId, setChatOwnerId ] = useState('');
     const [ userIsOwner, setUserIsOwner ] = useState(false);
@@ -22,6 +23,7 @@ const ChatInfo = (props) => {
                 const info = res.data;
                 setChatTitle(info.title);
                 setChatDescription(info.description);
+                setChatLanguage(info.language);
                 getUserInfo(info.owner)
                     .then((res) => {
                         setChatOwner(res.data.username)
@@ -56,6 +58,7 @@ const ChatInfo = (props) => {
         <div className='chatInfo'>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
             <h1>{chatTitle}</h1>
+            <p>Language: {chatLanguage}</p>
             <p>Description: {chatDescription}</p>
             <p>Chat Creator: {chatOwner}</p>
             { userIsOwner

@@ -14,7 +14,7 @@ export default () => {
                 const list = []
                 const chatData = res.data
                 for (const key of Object.keys(chatData)){
-                    list.push({id: chatData[key]._id, title: chatData[key].title})
+                    list.push({id: chatData[key]._id, title: chatData[key].title, language: chatData[key].language})
                 }
                 setChatList(list);
             })
@@ -24,12 +24,12 @@ export default () => {
         <div>
             <Nav/>
             <h1>Welcome {username}!</h1>
-            <p>Chats:</p>
+            <p>Active Chats:</p>
             <div>
-                {chatList.map(({id, title}) => {
+                {chatList.map(({id, title, language}) => {
                     const test = `/chat/${id}`
                     return (
-                        <p key={id}><Link to={test}>{title}</Link></p>
+                        <p key={id}><Link to={test}>{title} - {language}</Link></p>
                     )
                 })}
             </div>

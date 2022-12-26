@@ -15,6 +15,13 @@ const ChatSchema = new mongoose.Schema({
             "Description is required"
         ]
     },
+    language: {
+        type: String,
+        required: [
+            true,
+            "Language is required"
+        ]
+    },
     owner: {
         type: String
     }

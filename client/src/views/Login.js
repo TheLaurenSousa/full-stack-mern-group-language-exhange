@@ -47,7 +47,7 @@ export default () => {
 
     return (
         <div>
-            <h1>Chat Application</h1>
+            <h1>The Group Language Exchange</h1>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
             <LoginForms registration = { registration } login = { login }/>
         </div>

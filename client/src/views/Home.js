@@ -25,14 +25,23 @@ export default () => {
             <Nav/>
             <h1>Welcome {username}!</h1>
             <p>Active Chats:</p>
-            <div>
+            <table>
+                <tr>
+                    <th>Chat</th>
+                    <th>Language</th>
+                    <th>Join</th>
+                </tr>
                 {chatList.map(({id, title, language}) => {
-                    const test = `/chat/${id}`
+                    const url = `/chat/${id}`
                     return (
-                        <p key={id}><Link to={test}>{title} - {language}</Link></p>
+                        <tr key={id}>
+                            <td>{title}</td>
+                            <td>{language}</td>
+                            <td><Link to ={url}>Join</Link></td>
+                        </tr>
                     )
                 })}
-            </div>
+            </table>
         </div>
     );
 }

@@ -1,10 +1,41 @@
 .App {
   text-align: center;
-  cursor: pointer;
+  cursor: auto;
+}
+
+body{
+  background-color: #ceeddb;
+}
+
+#joinTheConversation, input[type="submit"]{
+  background-color: #6e8894;
+  border-radius: 10px;
+}
+
+#joinTheConversation{
+  width: 400px;
+  height: 100px;
+  font-size: large;
+  margin-top: 40px;
+}
+
+#joinTheConversation:hover, input[type="submit"]:hover{
+  color: white;
+  background-color: #85baa1;
 }
 
 form {
   padding-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], textarea{
+  background-color: #ceeddb;
+}
+
+.inputArea{
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login{
@@ -12,15 +43,20 @@ form {
   justify-content: center;
 }
 
-#registration, #login, .chat {
+#registration, #login, #createNewChat, .chat {
   border: 2px solid black;
   border-radius: 10px;
 }
 
-#registration, #login{
+#registration, #login, #createNewChat{
   margin: 20px 50px;
   padding: 10px;
   height: 250px;
+}
+
+#createNewChat{
+  margin: 0 auto;
+  width: 25%;
 }
 
 .chatPage{
@@ -94,7 +130,7 @@ form {
   margin: 0 auto;
   height: 50px;
   padding-left: 10px;
-  background-color: #50bbf8;
+  background-color: #85baa1;
 }
 
 ul{

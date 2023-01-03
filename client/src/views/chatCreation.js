@@ -35,12 +35,12 @@ export default () => {
             <Nav/>
             <h1>Create a Chat</h1>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
-            <form onSubmit={createChatHandler}>
-                <p>
+            <form id='createNewChat' onSubmit={createChatHandler}>
+                <p className='inputArea'>
                     <label>Title: </label>
                     <input type='text' name='title' onChange={(e) => setTitle(e.target.value)}/>
                 </p>
-                <p>
+                <p className='inputArea'>
                     <label>Language: </label>
                     <select name="language" onChange={(e) => setLanguage(e.target.value)}>
                         <option>Select Language</option>
@@ -118,9 +118,9 @@ export default () => {
                         <option value="Xhosa">Xhosa</option>
                     </select>
                 </p>
-                <p>
+                <p className='inputArea'>
                     <label>Description: </label>
-                    <textarea rows="5" onChange={(e) => setDescription(e.target.value)}/>
+                    <textarea rows="5" cols="35" onChange={(e) => setDescription(e.target.value)}/>
                 </p>
                 <input type="submit" value="Start Chatting"/>
             </form>

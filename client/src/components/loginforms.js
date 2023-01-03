@@ -23,11 +23,11 @@ const LoginForms = (props) => {
             <div>
                 <form id='login' onSubmit={loginHandler}>
                     <h2>Login:</h2>
-                    <p>
+                    <p className='inputArea'>
                         <label>Username: </label>
                         <input type='text' name='username' autoComplete='off' onChange={(e) => setUsername(e.target.value)}/>
                     </p>
-                    <p>
+                    <p className='inputArea'>
                         <label>Password: </label>
                         <input type='password' name='password' onChange={(e) => setPassword(e.target.value)}/>
                     </p>
@@ -37,15 +37,15 @@ const LoginForms = (props) => {
             <div>
                 <form id='registration' onSubmit={registrationHandler}>
                     <h2>Sign Up:</h2>
-                    <p>
+                    <p className='inputArea'>
                         <label>Username: </label>
                         <input type='text' name='username' autoComplete='off' onChange={(e) => setUsername(e.target.value)}/>
                     </p>
-                    <p>
+                    <p className='inputArea'>
                         <label>Password: </label>
                         <input type='password' name='password' onChange={(e) => setPassword(e.target.value)}/>
                     </p>
-                    <p>
+                    <p className='inputArea'>
                         <label>Confirm: </label>
                         <input type='password' name='confirmPassword' onChange={(e) => setConfirmPassword(e.target.value)}/>
                     </p>

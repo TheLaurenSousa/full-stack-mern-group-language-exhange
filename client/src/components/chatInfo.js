@@ -58,11 +58,11 @@ const ChatInfo = (props) => {
         <div className='chatInfo'>
             {errors.map((err, i) => <p key={i}>{err}</p>)}
             <h1>{chatTitle}</h1>
+            <p>{chatDescription}</p>
+            <p>Chat Created By: {chatOwner}</p>
             <p>Language: {chatLanguage}</p>
-            <p>Description: {chatDescription}</p>
-            <p>Chat Creator: {chatOwner}</p>
             { userIsOwner
-                ? <button onClick={deleteHandler}>Delete Chat</button> : null
+                ? <button id="deleteChat" onClick={deleteHandler}>Delete Chat</button> : null
             }
         </div>
     )

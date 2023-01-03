@@ -24,7 +24,7 @@ export default () => {
         <div>
             <Nav/>
             <h1>Welcome {username}!</h1>
-            <p>Active Chats:</p>
+            <p>Explore Active Chats:</p>
             <table>
                 <tr>
                     <th>Chat</th>

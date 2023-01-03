@@ -16,10 +16,13 @@ const ChatInput = () => {
     };
 
     return (
-        <form onSubmit={onSubmitHandler} className='chatForm'>
-            <textarea id="msg" autoComplete="off" rows="2" cols="50" value={message} onChange={(e) => setMessage(e.target.value)}/>
-            <button>Send</button>
-        </form>
+        <div>
+            <hr/>
+            <form onSubmit={onSubmitHandler} className='chatForm'>
+                <textarea id="msg" autoComplete="off" rows="2" cols="50" value={message} onChange={(e) => setMessage(e.target.value)}/>
+                <button>Send</button>
+            </form>
+        </div>
     );
 }
 

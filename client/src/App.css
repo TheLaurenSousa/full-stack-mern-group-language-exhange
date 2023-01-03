@@ -7,8 +7,9 @@ body{
   background-color: #ceeddb;
 }
 
-#joinTheConversation, input[type="submit"]{
-  background-color: #6e8894;
+#joinTheConversation, input[type="submit"], #deleteChat{
+  color: white;
+  background-color: #85baa1;
   border-radius: 10px;
 }
 
@@ -19,9 +20,9 @@ body{
   margin-top: 40px;
 }
 
-#joinTheConversation:hover, input[type="submit"]:hover{
-  color: white;
-  background-color: #85baa1;
+#joinTheConversation:hover, input[type="submit"]:hover, #deleteChat:hover{
+  color: black;
+  background-color: #6e8894;
 }
 
 form {
@@ -73,6 +74,10 @@ input[type="text"], input[type="password"], textarea{
   width: 75%;
 }
 
+.chat, #msg{
+  background-color: #f2f2f2;
+}
+
 .chatLog {
   margin-bottom: 40px;
   height: 500px;
@@ -91,13 +96,13 @@ input[type="text"], input[type="password"], textarea{
 .userMessage {
   margin-left: auto;
   margin-right: 10px;
-  background-color: #039df7;
+  background-color: #85baa1;
 }
 
 .otherMessage {
   margin-left: 10px;
   margin-right: auto;
-  background-color: #b3dbf3;
+  background-color: #ceeddb;
 }
 
 .serverMessage {

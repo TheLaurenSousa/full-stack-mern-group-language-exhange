@@ -20,7 +20,7 @@ const ChatNav = (props) => {
         navigate('/')
     }
 
-    const onHomeClick = e => {
+    const onExploreClick = e => {
         exitChat();
         navigate('/home')
     }
@@ -37,9 +37,12 @@ const ChatNav = (props) => {
 
     return (
         <div className='nav'>
-            <button onClick={onHomeClick}>Home</button>
-            <button onClick={createChat}>Create Chat</button>
-            <button onClick={logout}>Logout</button>
+            <h2 onClick={onExploreClick}>Group Language Exchange</h2>
+            <ul>
+                <li onClick={onExploreClick}>Explore Chats</li>
+                <li onClick={createChat}>Create Chat</li>
+                <li onClick={logout}>Logout</li>
+            </ul>
         </div>
     );
 }

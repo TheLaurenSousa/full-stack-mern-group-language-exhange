@@ -88,12 +88,29 @@ form {
 }
 
 .nav{
-  height: 50px;
-  width: 75%;
-  margin: 0 auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 50px;
+  padding-left: 10px;
+  background-color: #50bbf8;
+}
+
+ul{
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+li{
+  font-weight: bold;
+}
+
+li:hover{
+  color: white;
 }
 
 table{
